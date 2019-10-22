@@ -66,7 +66,7 @@ bool WordTree::find(std::string word) {
 //The prediction must be a lexicographical prediction of the next possible words.
 //This requires a breath - first search of the tree, after the node where the partial word ends.
 //Here is a wiki link on how to perform a breadth first search : https://en.wikipedia.org/wiki/Breadth-first_search (Links to an external site.)
-std::vector<std::string> WordTree::predict(std::string partial, std::uint8_t howMany) {
+std::vector<std::string> WordTree::predict(std::string partial, int howMany) {
 
 	std::vector<std::string> words;
 

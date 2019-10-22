@@ -20,7 +20,7 @@ int main()
 	std::string currentPartial = "";
 	while (true) {
 		if (kbhit()) {
-			auto key = rlutil::getkey();
+			int key = rlutil::getkey();
 			//if its a letter
 			if (key >= 97 && key < 123) {
 				rlutil::cls();
@@ -28,7 +28,7 @@ int main()
 				std::cout << currentPartial;
 
 				rlutil::locate(x, y);
-				rlutil::setChar(key);
+				rlutil::setChar((char)key);
 				currentPartial += (char)key;
 				x++;
 				
