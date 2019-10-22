@@ -91,7 +91,7 @@ std::vector<std::string> WordTree::predict(std::string partial, std::uint8_t how
 	//myPtr now points to the node which is the end of the partial 
 	//this is where we will start our breadth first search
 	std::queue<std::tuple<std::shared_ptr<node>, std::string, char>> myQueue;
-	//myQueue.push(*myPtr);
+
 	for (int i = 0; i < 26; i++)
 	{
 		auto myTuple = std::make_tuple(myPtr->children[i],partial,alphabet[i]);

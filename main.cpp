@@ -12,32 +12,14 @@ std::shared_ptr<WordTree> readDictionary(std::string filename);
 
 int main()
 {
-	WordTree myTree = *readDictionary("dictionary.txt");
-	//WordTree myTree;
+	//This is where you need to put your path
+	WordTree myTree = *readDictionary("C:\\Users\\klind\\source\\repos\\TypeAhead\\TypeAhead\\dictionary.txt");
 
-	/*myTree.add("a");
-	myTree.add("ab");
-
-	myTree.add("aabcd");
-	myTree.add("and");
-	myTree.add("apple");
-	myTree.add("amazing");
-
-	myTree.add("bread");
-	myTree.add("bair");
-	myTree.add("bu");
-	myTree.add("lex");
-	myTree.add("ald");
-	myTree.add("ale");
-	myTree.add("green");
-	myTree.add("grub");
-*/
 	int x = 1;
 	int y = 1;
 	std::string currentPartial = "";
 	while (true) {
 		if (kbhit()) {
-			//rlutil::cls();
 			auto key = rlutil::getkey();
 			//if its a letter
 			if (key >= 97 && key < 123) {
@@ -46,7 +28,6 @@ int main()
 				std::cout << currentPartial;
 
 				rlutil::locate(x, y);
-				//std::cout << key << " ";
 				rlutil::setChar(key);
 				currentPartial += (char)key;
 				x++;
@@ -92,30 +73,20 @@ int main()
 				//after printint out predictions, move back so user can input more stuffs
 				rlutil::locate(x, y);
 			}
-			
-			//y ++;
-			
-
 		}
-		int i;
 	}
 
-	//auto predictions = myTree.predict("a",7);
-	////testing find
-	//std::cout << myTree.find("aardvark") << std::endl;
-	//std::cout << myTree.find("a") << std::endl;
-	//std::cout << myTree.find("abcdefa") << std::endl;
 	return 0;
 }
 
 std::shared_ptr<WordTree> readDictionary(std::string filename)
 {
 	auto wordTree = std::make_shared<WordTree>();
-	std::ifstream inFile = std::ifstream(filename, std::ios::in);
-	//inFile.open(filename);
+	std::ifstream inFile;
+	inFile.open(filename);
 	if (!inFile) {
 		std::cout << "failed to find file" << std::endl;
-		return nullptr;
+		return wordTree;
 	}
 
 	while (!inFile.eof())
