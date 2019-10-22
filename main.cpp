@@ -12,10 +12,10 @@ std::shared_ptr<WordTree> readDictionary(std::string filename);
 
 int main()
 {
-	//WordTree myTree = *readDictionary("dictionary.txt");
-	WordTree myTree;
+	WordTree myTree = *readDictionary("dictionary.txt");
+	//WordTree myTree;
 
-	myTree.add("a");
+	/*myTree.add("a");
 	myTree.add("ab");
 
 	myTree.add("aabcd");
@@ -23,6 +23,15 @@ int main()
 	myTree.add("apple");
 	myTree.add("amazing");
 
+	myTree.add("bread");
+	myTree.add("bair");
+	myTree.add("bu");
+	myTree.add("lex");
+	myTree.add("ald");
+	myTree.add("ale");
+	myTree.add("green");
+	myTree.add("grub");
+*/
 	int x = 1;
 	int y = 1;
 	std::string currentPartial = "";
@@ -43,9 +52,18 @@ int main()
 				x++;
 				
 				//call predictions, get the vector, print it out
-				rlutil::locate(1, y + 2);
+				int tmpY = y + 2;
+				rlutil::locate(1, tmpY);
 				std::cout << "--- Predictions ---";
+				tmpY++;
+				rlutil::locate(1, tmpY);
 
+				std::vector<std::string> predictions = myTree.predict(currentPartial, rlutil::trows() - 6);
+				for (std::string str : predictions) {
+					std::cout << str;
+					tmpY++;
+					rlutil::locate(1, tmpY);
+				}
 
 				//after printint out predictions, move back so user can input more stuffs
 				rlutil::locate(x, y);
@@ -58,9 +76,18 @@ int main()
 				std::cout << currentPartial;
 				
 				//call predictions, get the vector, print it out
-				rlutil::locate(1, y + 2);
+				int tmpY = y + 2;
+				rlutil::locate(1, tmpY);
 				std::cout << "--- Predictions ---";
-				rlutil::locate(1, y + 3); std::cout << "wow";
+				tmpY++;
+				rlutil::locate(1, tmpY);
+
+				std::vector<std::string> predictions = myTree.predict(currentPartial, rlutil::trows() - 6);
+				for (std::string str : predictions) {
+					std::cout << str;
+					tmpY++;
+					rlutil::locate(1, tmpY);
+				}
 
 				//after printint out predictions, move back so user can input more stuffs
 				rlutil::locate(x, y);
@@ -84,8 +111,8 @@ int main()
 std::shared_ptr<WordTree> readDictionary(std::string filename)
 {
 	auto wordTree = std::make_shared<WordTree>();
-	std::ifstream inFile;// = std::ifstream(filename, std::ios::in);
-	inFile.open(filename);
+	std::ifstream inFile = std::ifstream(filename, std::ios::in);
+	//inFile.open(filename);
 	if (!inFile) {
 		std::cout << "failed to find file" << std::endl;
 		return nullptr;
