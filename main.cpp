@@ -13,7 +13,7 @@ std::shared_ptr<WordTree> readDictionary(std::string filename);
 int main()
 {
     //This is where you need to put your path
-    WordTree myTree = *readDictionary("C:\\Users\\klind\\source\\repos\\TypeAhead\\TypeAhead\\dictionary.txt");
+    WordTree myTree = *readDictionary("dictionary.txt");
 
     int x = 1;
     int y = 1;
@@ -53,7 +53,7 @@ int main()
                 //after printint out predictions, move back so user can input more stuffs
                 rlutil::locate(x, y);
             }
-            else if (key == 8 && currentPartial.length() > 0)
+            else if (key == rlutil::KEY_BACKSPACE && currentPartial.length() > 0)
             {
                 rlutil::cls();
                 x--;
