@@ -92,7 +92,7 @@ std::vector<std::string> WordTree::predict(std::string partial, int howMany)
 
     for (size_t i = 0; i < partial.length(); i++)
     {
-        auto c = partial[i];
+        char c = partial[i];
         auto itr = std::find(alphabet.begin(), alphabet.end(), c);
         auto index = std::distance(alphabet.begin(), itr); //index of the current letter.. so the index of our ptr vector
 
@@ -116,7 +116,7 @@ std::vector<std::string> WordTree::predict(std::string partial, int howMany)
         myQueue.push(myTuple);
     }
 
-    while (!myQueue.empty() && words.size() < howMany)
+    while (!myQueue.empty() && words.size() < (size_t)howMany)
     {
         auto tmpTuple = myQueue.front(); //get the ptr and the beginning of the txt to where you are
         auto tmp = std::get<0>(tmpTuple);
