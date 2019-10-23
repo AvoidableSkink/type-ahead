@@ -12,7 +12,7 @@ void WordTree::add(std::string word)
 
     std::shared_ptr<node> myPtr = root;
 
-    for (int i = 0; i < word.length(); i++)
+    for (size_t i = 0; i < word.length(); i++)
     {
         auto c = word[i];
         auto itr = std::find(alphabet.begin(), alphabet.end(), c);
@@ -48,7 +48,7 @@ bool WordTree::find(std::string word)
 
     std::shared_ptr<node> myPtr = root;
 
-    for (int i = 0; i < word.length(); i++)
+    for (size_t i = 0; i < word.length(); i++)
     {
         auto c = word[i];
         auto itr = std::find(alphabet.begin(), alphabet.end(), c);
@@ -90,7 +90,7 @@ std::vector<std::string> WordTree::predict(std::string partial, int howMany)
     }
     std::shared_ptr<node> myPtr = root;
 
-    for (int i = 0; i < partial.length(); i++)
+    for (size_t i = 0; i < partial.length(); i++)
     {
         auto c = partial[i];
         auto itr = std::find(alphabet.begin(), alphabet.end(), c);
